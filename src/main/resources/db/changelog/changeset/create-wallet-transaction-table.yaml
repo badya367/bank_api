@@ -1,0 +1,35 @@
+databaseChangeLog:
+  -changeSet:
+    id: create-wallet-transaction
+    author: Badikov-Dmitriy
+    changes:
+      - createTable:
+          tableName: wallet_transaction
+          columns:
+            - column:
+                name: id
+                type: UUID
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: uuid_wallet
+                type: UUID
+                constraints:
+                  foreignKeyName: fk_wallet_transaction_wallet
+                  references: wallets(uuid)
+            - column:
+                name: type_operation
+                type: VARCHAR(10)
+                constraints:
+                  nullable: false
+            - column:
+                name: status_operation
+                type: VARCHAR(10)
+                constraints:
+                  nullable: false
+            - column:
+                name: sum_operation
+                type: DECIMAL(19,2)
+                constraints:
+                  nullable: false

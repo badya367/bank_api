@@ -1,0 +1,17 @@
+volumes:
+  pg_test_bank_api:
+
+services:
+  test_bank-api-postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=bank_api_test_db
+    volumes:
+      - pg_test_bank_api:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+
+
